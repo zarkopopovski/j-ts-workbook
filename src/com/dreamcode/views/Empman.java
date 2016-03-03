@@ -121,7 +121,7 @@ public class Empman extends JDialog implements ActionListener{
         jButton4.setText("Upd");
         jButton4.addActionListener(this);       
         jComboBox1 = new JComboBox();
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "","All","Progesa & eProgesa", "eRiskLine", "TraceLine", "QMS & QA" }));	
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "","All","Team1", "Team2", "Team3", "QMS & QA" }));	
         jComboBox2 = new JComboBox();
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "","Administrator", "Super User", "User" }));	
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());

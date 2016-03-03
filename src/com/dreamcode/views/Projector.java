@@ -317,12 +317,12 @@ public class Projector extends JDialog implements ActionListener{
 					rs = stat.executeQuery("SELECT DISTINCT p.id,p.product,c.name,p.status FROM project p,client c, products pr WHERE p.clid=c.id AND p.prodid=pr.id AND pr.product IN('QMS','QA') ORDER BY p.product ASC");										
 				}else{					
 					//rs = stat.executeQuery("SELECT DISTINCT p.id,p.product,c.name,p.status FROM project p,client c, products pr WHERE p.clid=c.id AND p.prodid=pr.id AND pr.product = 'Progesa' OR pr.product = 'eProgesa' ORDER BY p.product ASC");
-					rs = stat.executeQuery("SELECT DISTINCT p.id,p.product,c.name,p.status FROM project p,client c, products pr WHERE p.clid=c.id AND p.prodid=pr.id AND pr.product IN('Progesa','eProgesa') ORDER BY p.product ASC");
+					rs = stat.executeQuery("SELECT DISTINCT p.id,p.product,c.name,p.status FROM project p,client c, products pr WHERE p.clid=c.id AND p.prodid=pr.id AND pr.product IN('Team1','Team1') ORDER BY p.product ASC");
 				}				
-			}else if(jts.groupIt.equals("eRiskLine")){				
-				rs = stat.executeQuery("SELECT DISTINCT p.id,p.product,c.name,p.status FROM project p,client c, products pr WHERE p.clid=c.id AND p.prodid=pr.id AND pr.product = 'eRiskLine' ORDER BY p.product ASC");									
-			}else if(jts.groupIt.equals("TraceLine")){				
-				rs = stat.executeQuery("SELECT DISTINCT p.id,p.product,c.name,p.status FROM project p,client c, products pr WHERE p.clid=c.id AND p.prodid=pr.id AND pr.product = 'TraceLine' ORDER BY p.product ASC");									
+			}else if(jts.groupIt.equals("Team2")){				
+				rs = stat.executeQuery("SELECT DISTINCT p.id,p.product,c.name,p.status FROM project p,client c, products pr WHERE p.clid=c.id AND p.prodid=pr.id AND pr.product = 'Team2' ORDER BY p.product ASC");									
+			}else if(jts.groupIt.equals("Team3")){				
+				rs = stat.executeQuery("SELECT DISTINCT p.id,p.product,c.name,p.status FROM project p,client c, products pr WHERE p.clid=c.id AND p.prodid=pr.id AND pr.product = 'Team3' ORDER BY p.product ASC");									
 			}else{
 				rs = stat.executeQuery("SELECT DISTINCT p.id,p.product,c.name,p.status FROM project p,client c WHERE p.clid=c.id ORDER BY p.product ASC");									
 			}

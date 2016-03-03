@@ -343,12 +343,12 @@ public class Projmen extends JDialog implements ActionListener{
 				if(jts.groupIt.startsWith("QMS")){
 					rs = stat.executeQuery("SELECT * FROM products WHERE product = 'QMS' OR product = 'QA'");															
 				}else{					
-					rs = stat.executeQuery("SELECT * FROM products WHERE product='Progesa' OR product='eProgesa'");					
+					rs = stat.executeQuery("SELECT * FROM products WHERE product='Team1' OR product='Team1'");					
 				}
 			}else if(jts.groupIt.equals("eRiskLine")){				
-				rs = stat.executeQuery("SELECT * FROM products WHERE product='eRiskLine'");
+				rs = stat.executeQuery("SELECT * FROM products WHERE product='Team2'");
 			}else if(jts.groupIt.equals("TraceLine")){
-				rs = stat.executeQuery("SELECT * FROM products WHERE product='TraceLine'");				
+				rs = stat.executeQuery("SELECT * FROM products WHERE product='Team3'");				
 			}else{
 				rs = stat.executeQuery("SELECT * FROM products");
 			}	
