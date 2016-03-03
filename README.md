@@ -33,7 +33,7 @@ Installation steps:
 2. Importing and executing the SQL script with the database schema.
 3.	Manually creating admin user.
 
-First and last version of this application was released and used as tool for tracking inhouse projects at 2008. Since then the application is not updated nor refactored so it may contain some bugs.
+First and last version of this application was released and used as tool for tracking inhouse projects on 2008. Since then the application is not updated nor refactored so it may contain some bugs.
 
 As open source software you can do whatever you want with it, everything is on your own risk.
 
