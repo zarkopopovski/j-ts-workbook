@@ -338,17 +338,8 @@ public class Projmen extends JDialog implements ActionListener{
 		int i=0;
 		try{			
 			stat=con.createStatement();	
-			if(jts.groupIt.indexOf("&")>0){
-				//rs = stat.executeQuery("SELECT p.id,p.product FROM project p, products pr WHERE p.prodid=pr.id AND pr.product='Progesa' OR pr.product='eProgesa'");
-				if(jts.groupIt.startsWith("QMS")){
-					rs = stat.executeQuery("SELECT * FROM products WHERE product = 'QMS' OR product = 'QA'");															
-				}else{					
-					rs = stat.executeQuery("SELECT * FROM products WHERE product='Team1' OR product='Team1'");					
-				}
-			}else if(jts.groupIt.equals("eRiskLine")){				
-				rs = stat.executeQuery("SELECT * FROM products WHERE product='Team2'");
-			}else if(jts.groupIt.equals("TraceLine")){
-				rs = stat.executeQuery("SELECT * FROM products WHERE product='Team3'");				
+			if(!jts.groupIt.equals("All")){				
+				rs = stat.executeQuery("SELECT * FROM products WHERE product='"+jts.groupIt+"'");
 			}else{
 				rs = stat.executeQuery("SELECT * FROM products");
 			}	

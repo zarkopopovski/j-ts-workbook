@@ -1,6 +1,7 @@
 package com.dreamcode.views;
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
@@ -13,6 +14,7 @@ import java.lang.*;
 import java.io.*;
 import java.sql.*;
 import java.net.*;
+import java.util.List;
 
 public class Empman extends JDialog implements ActionListener{
 	
@@ -66,6 +68,9 @@ public class Empman extends JDialog implements ActionListener{
 		setBounds(xPos,yPos,500,275);		
 		setResizable(false);		
 	
+		this.con=parent.con;
+		this.jts = parent;
+		
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -119,9 +124,12 @@ public class Empman extends JDialog implements ActionListener{
         ib4 = Toolkit.getDefaultToolkit().getImage(jb4);       
         jButton4 = new javax.swing.JButton(new ImageIcon(ib4));
         jButton4.setText("Upd");
-        jButton4.addActionListener(this);       
+        jButton4.addActionListener(this);   
+        
+        returnTeamNames();
+        
         jComboBox1 = new JComboBox();
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "","All","Team1", "Team2", "Team3", "QMS & QA" }));	
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(returnTeamNames()));	
         jComboBox2 = new JComboBox();
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "","Administrator", "Super User", "User" }));	
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -130,8 +138,6 @@ public class Empman extends JDialog implements ActionListener{
         jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         //jPanel3.setLayout(new java.awt.GridLayout(2, 2, 5, 5));
         jPanel3.setLayout(new java.awt.BorderLayout());
-		this.con=parent.con;
-		jts = new JTSWorkBook();
 			
         jLabel1.setText(" Name");
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -240,6 +246,29 @@ public class Empman extends JDialog implements ActionListener{
 			jTextField5.setText(rs.getString("email"));				
 		}catch(Exception ex){	}
 	}	
+	public Object[] returnTeamNames(){
+		List<String>teamNamesList = null;
+		try {
+			stat=con.createStatement();									
+			rs = stat.executeQuery("SELECT id,name FROM teams");
+			
+			teamNamesList = new ArrayList<String>();
+			
+			teamNamesList.add("");
+			teamNamesList.add("All");
+			
+			rs.first();
+			
+			while (rs.next()) {
+				teamNamesList.add(rs.getString(2));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);	
+			e.printStackTrace();
+		}
+		return ((teamNamesList!=null)?teamNamesList.toArray():null);
+	}
 	public void actionPerformed(ActionEvent ae){
 		if(ae.getSource()==jButton1){
 			

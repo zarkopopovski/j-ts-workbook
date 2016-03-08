@@ -316,17 +316,8 @@ public class Timshe extends JDialog implements ActionListener{
 		int i=0;
 		try{			
 			stat=con.createStatement();									
-				if(jts.groupIt.indexOf("&")>0){
-					//rs = stat.executeQuery("SELECT p.id,p.product FROM project p, products pr WHERE p.prodid=pr.id AND pr.product='Progesa' OR pr.product='eProgesa'");
-					if(jts.groupIt.startsWith("QMS")){
-						rs = stat.executeQuery("SELECT DISTINCT p.id,p.product,c.name,p.status FROM project p,client c, products pr WHERE p.clid=c.id AND p.prodid=pr.id AND pr.product IN('QMS','QA') ORDER BY p.product ASC");										
-					}else{					
-						rs = stat.executeQuery("SELECT DISTINCT p.id,p.product,c.name,p.status FROM project p,client c, products pr WHERE p.clid=c.id AND p.prodid=pr.id AND pr.product IN('Team1','Team1') ORDER BY p.product ASC");
-					}
-				}else if(jts.groupIt.equals("Team2")){
-					rs = stat.executeQuery("SELECT DISTINCT p.id,p.product FROM project p, products pr WHERE p.prodid=pr.id AND pr.product='Team2' ORDER BY p.product ASC");
-				}else if(jts.groupIt.equals("Team3")){
-					rs = stat.executeQuery("SELECT DISTINCT p.id,p.product FROM project p, products pr WHERE p.prodid=pr.id AND pr.product='Team3' ORDER BY p.product ASC");
+				if(!jts.groupIt.equals("All")){
+					rs = stat.executeQuery("SELECT DISTINCT p.id,p.product FROM project p, products pr WHERE p.prodid=pr.id AND pr.product='"+jts.groupIt+"' ORDER BY p.product ASC");
 				}else{
 					rs = stat.executeQuery("SELECT DISTINCT id,product FROM project ORDER BY product ASC");
 				}	

@@ -29,6 +29,7 @@ public class JTSWorkBook extends JFrame implements ActionListener{
     private JButton jButton18;
     private JButton jButton19;
     private JButton jButton20;
+    private JButton jButton21;
     private JButton jButton2;
     private JButton jButton3;
     private JButton jButton4;
@@ -70,8 +71,8 @@ public class JTSWorkBook extends JFrame implements ActionListener{
     public Connection con;
     public ResultSet rs;
     public Statement stat;
-    public URL jb1,jb2,jb3,jb4,jb5,jb6,jb7,jb8,jb9,jb10,jb11,jb12,jb13,jb14,jb15,jb16,jb17,jb20;
-    public Image ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8,ib9,ib10,ib11,ib12,ib13,ib14,ib15,ib16,ib17,ib20;
+    public URL jb1,jb2,jb3,jb4,jb5,jb6,jb7,jb8,jb9,jb10,jb11,jb12,jb13,jb14,jb15,jb16,jb17,jb20,jb21;
+    public Image ib1,ib2,ib3,ib4,ib5,ib6,ib7,ib8,ib9,ib10,ib11,ib12,ib13,ib14,ib15,ib16,ib17,ib20,ib21;
     public int uid; 
     public File f;
     public FileReader fr;
@@ -196,7 +197,14 @@ public class JTSWorkBook extends JFrame implements ActionListener{
         ib5 = Toolkit.getDefaultToolkit().getImage(jb5);        
         jButton5 = new javax.swing.JButton(new ImageIcon(ib5));        
         jButton5.setToolTipText("Groups");                 
-        jButton5.addActionListener(this);        
+        jButton5.addActionListener(this);  
+        
+        jb21 = ClassLoader.getSystemResource("img/gremp.png");
+        ib21 = Toolkit.getDefaultToolkit().getImage(jb21);        
+        jButton21 = new javax.swing.JButton(new ImageIcon(ib21));        
+        jButton21.setToolTipText("Teams Informations");                 
+        jButton21.addActionListener(this);  
+        
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel(new BorderLayout());
         jPanel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 1, 1, 1));
@@ -303,6 +311,8 @@ public class JTSWorkBook extends JFrame implements ActionListener{
         jToolBar1.setRollover(true);        
         
         jToolBar1.add(jButton1);
+        
+        jToolBar1.add(jButton21);
         
         jToolBar1.add(jButton17);
                 
@@ -510,6 +520,9 @@ public class JTSWorkBook extends JFrame implements ActionListener{
 				Projector prj = new Projector(JTSWorkBook.this,"Projects Manager");
 				prj.show();		
 			
+		}else if(ae.getSource()==jButton21){
+			TeamsMng teamsMng = new TeamsMng(JTSWorkBook.this, "Teams Manager");
+			teamsMng.show();		
 		}else if(ae.getSource()==jButton3){
 				Reprojector rect = new Reprojector(JTSWorkBook.this,"Tasks and Activities Manager");
 				rect.show();		
